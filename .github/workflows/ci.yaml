@@ -18,12 +18,12 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build --no-restore -c Release
 
       - name: Test
         run: |
-          dotnet test Depot.Storage.Local.Tests --verbosity normal
-        #  dotnet test Depot.Storage.S3.Tests --verbosity normal
+          dotnet test Depot.Storage.Local.Tests -c Release --no-build --verbosity normal
+        #  dotnet test Depot.Storage.S3.Tests -c Release --no-build --verbosity normal
 
       - id: artifact-names
         run: |
