@@ -1,0 +1,63 @@
+﻿name: CI
+
+on: ["push", "pull_request"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+
+      - id: artifact-names
+        run: |
+          echo "::set-output name=depot-core::Depot.Core-ci.${{ github.run_number }}.zip"
+          echo "::set-output name=depot-storage-tests::Depot.Storage.Tests-ci.${{ github.run_number }}.zip"
+          echo "::set-output name=depot-storage-local::Depot.Storage.Local-ci.${{ github.run_number }}.zip"
+          echo "::set-output name=depot-storage-local-tests::Depot.Storage.Local.Tests-ci.${{ github.run_number }}.zip"
+          echo "::set-output name=depot-storage-s3::Depot.Storage.S3-ci.${{ github.run_number }}.zip"
+          echo "::set-output name=depot-storage-s3-tests::Depot.Storage.S3.Tests-ci.${{ github.run_number }}.zip"
+
+      - uses: actions/upload-artifact@v3.1.0
+        with:
+          name: ${{ steps.artifact-names.outputs.depot-core }}
+          path: Depot.Core/bin/Release/net6.0/Depot.Core.dll
+
+      - uses: actions/upload-artifact@v3.1.0
+        with:
+          name: ${{ steps.artifact-names.outputs.depot-storage-tests }}
+          path: Depot.Storage.Tests/bin/Release/net6.0/Depot.Storage.Tests.dll
+
+      - uses: actions/upload-artifact@v3.1.0
+        with:
+          name: ${{ steps.artifact-names.outputs.depot-storage-local }}
+          path: Depot.Storage.Local/bin/Release/net6.0/Depot.Storage.Local.dll
+
+      - uses: actions/upload-artifact@v3.1.0
+        with:
+          name: ${{ steps.artifact-names.outputs.depot-storage-local-tests }}
+          path: Depot.Storage.Local.Tests/bin/Release/net6.0/Depot.Storage.Local.Tests.dll
+
+      - uses: actions/upload-artifact@v3.1.0
+        with:
+          name: ${{ steps.artifact-names.outputs.depot-storage-s3 }}
+          path: Depot.Storage.S3/bin/Release/net6.0/Depot.Storage.S3.dll
+
+      - uses: actions/upload-artifact@v3.1.0
+        with:
+          name: ${{ steps.artifact-names.outputs.depot-storage-s3-tests }}
+          path: Depot.Storage.S3.Tests/bin/Release/net6.0/Depot.Storage.S3.Tests.dll
