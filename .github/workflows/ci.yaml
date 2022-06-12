@@ -22,8 +22,8 @@ jobs:
 
       - name: Test
         run: |
-          dotnet test Depot.Storage.Local.Tests --no-build --verbosity normal
-        #  dotnet test Depot.Storage.S3.Tests --no-build --verbosity normal
+          dotnet test Depot.Storage.Local.Tests --verbosity normal
+        #  dotnet test Depot.Storage.S3.Tests --verbosity normal
 
       - id: artifact-names
         run: |
