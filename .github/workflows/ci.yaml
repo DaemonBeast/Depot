@@ -21,7 +21,9 @@ jobs:
         run: dotnet build --no-restore --configuration Release
 
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        run: |
+          dotnet test Depot.Storage.Local.Tests --no-build --verbosity normal
+        #  dotnet test Depot.Storage.S3.Tests --no-build --verbosity normal
 
       - id: artifact-names
         run: |
