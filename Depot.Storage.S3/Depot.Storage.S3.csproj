@@ -4,6 +4,10 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <Version>1.0.0</Version>
+        <Description>C# storage abstraction for AWS S3</Description>
+        <Authors>Daemon</Authors>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,5 +19,7 @@
       <PackageReference Include="AWSSDK.S3" Version="3.7.9.15" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     </ItemGroup>
+
+    <Import Project="../Package.props" />
 
 </Project>

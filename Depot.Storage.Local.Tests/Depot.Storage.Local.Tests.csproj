@@ -5,6 +5,10 @@
         <Nullable>enable</Nullable>
 
         <IsPackable>false</IsPackable>
+
+        <Version>1.0.0</Version>
+        <Description>C# storage abstraction tests for the local filesystem</Description>
+        <Authors>Daemon</Authors>
     </PropertyGroup>
 
     <ItemGroup>

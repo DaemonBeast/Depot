@@ -4,6 +4,10 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+
+        <Version>1.0.0</Version>
+        <Description>C# storage abstraction for the local filesystem</Description>
+        <Authors>Daemon</Authors>
     </PropertyGroup>
 
     <ItemGroup>
@@ -13,5 +17,7 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     </ItemGroup>
+
+    <Import Project="../Package.props" />
 
 </Project>

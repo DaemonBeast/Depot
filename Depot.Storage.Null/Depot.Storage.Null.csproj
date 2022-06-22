@@ -4,12 +4,16 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        
+
         <Version>1.0.0</Version>
-        <Description>C# storage abstraction core</Description>
+        <Description>C# storage abstraction for an empty filesystem</Description>
         <Authors>Daemon</Authors>
     </PropertyGroup>
-    
+
+    <ItemGroup>
+      <ProjectReference Include="..\Depot.Core\Depot.Core.csproj" />
+    </ItemGroup>
+
     <Import Project="../Package.props" />
 
 </Project>

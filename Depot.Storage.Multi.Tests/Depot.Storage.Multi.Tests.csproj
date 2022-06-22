@@ -7,25 +7,26 @@
         <IsPackable>false</IsPackable>
 
         <Version>1.0.0</Version>
-        <Description>C# storage abstraction tests for AWS S3</Description>
+        <Description>C# storage abstraction tests for multiple stores</Description>
         <Authors>Daemon</Authors>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
         <PackageReference Include="xunit" Version="2.4.1" />
-        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
-        <PackageReference Include="coverlet.collector" Version="3.1.2">
+        <PackageReference Include="coverlet.collector" Version="3.1.0">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Depot.Storage.S3\Depot.Storage.S3.csproj" />
+      <ProjectReference Include="..\Depot.Storage.Local\Depot.Storage.Local.csproj" />
+      <ProjectReference Include="..\Depot.Storage.Multi\Depot.Storage.Multi.csproj" />
       <ProjectReference Include="..\Depot.Storage.Tests\Depot.Storage.Tests.csproj" />
     </ItemGroup>
 
